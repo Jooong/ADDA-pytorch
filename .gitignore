@@ -7,6 +7,9 @@ data/*
 # log
 logs/
 
+# pretrained
+pretrained/
+
 # ipython checkpoints
 .ipynb_checkpoints
 
