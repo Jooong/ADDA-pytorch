@@ -24,10 +24,10 @@ def _transform(dset="MNIST"):
 
 def get_loader(type="MNIST",train=True,batch_size=100):
     if type=="MNIST":
-        dset = dsets.MNIST(root="../data/MNIST",train=train,transform=_transform("MNIST"),download=True)
+        dset = dsets.MNIST(root="./data/MNIST",train=train,transform=_transform("MNIST"),download=True)
     else:
         split = "train" if train else "test"
-        dset = dsets.SVHN(root="../data/SVHN",split=split,transform=_transform("SVHN"),download=True)
+        dset = dsets.SVHN(root="./data/SVHN",split=split,transform=_transform("SVHN"),download=True)
         
     loader= torch.utils.data.DataLoader(dset, batch_size=batch_size, shuffle=True)
     return loader

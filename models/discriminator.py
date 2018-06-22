@@ -1,7 +1,7 @@
 from torch import nn
 
 class Discriminator(nn.Module):
-    def __init__(self):
+    def __init__(self,ngpu):
         super(Discriminator,self).__init__()
         layers = []
         for _ in range(2):
@@ -10,6 +10,7 @@ class Discriminator(nn.Module):
             
         layers.append(nn.Linear(in_features=500,out_features=2))
         self.model = nn.Sequential(*layers)
+        self.ngpu = ngpu
         
     def forward(self,x):
         return self.model(x)
@@ -26,6 +27,9 @@ class Discriminator_CNN(nn.Module):
         )
         
     def forward(self,x):
-        x = self.conv(x)
+        if x.is_cuda and self.ngpu>1:
+            x = embedding = nn.parallel.data_parallel(self.conv,x,range(self.ngpu))
+        else:
+            x = self.conv(x)
         x = x.view(-1,1)
         return x

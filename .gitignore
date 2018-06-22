@@ -1,1 +1,14 @@
+# OS
 .DS_store
+
+# Data
+data/*
+
+# log
+logs/
+
+# ipython checkpoints
+.ipynb_checkpoints
+
+# Python
+__pycache__/

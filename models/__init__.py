@@ -1,4 +1,4 @@
-from .discriminator import Discriminator, Discriminator_CNN
-from .lenet import LeNet,CNN
+from .discriminator import Discriminator
+from .lenet import LeNet
 
-__all__ = (LeNet, Discriminator,CNN,Discriminator_CNN)
+__all__ = (LeNet, Discriminator)
